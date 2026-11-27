@@ -1,0 +1,727 @@
+## 1. Constants: what can and cannot currently be claimed
+
+After checking the proposed 3D derivation carefully, the constants
+
+$$\kappa_0=\frac18,\qquad v_*=\frac{1}{13e}\approx 0.0283$$
+
+do **not** yet have the same status as the constants in the 2D theorem.
+
+The $2$D manuscript contains an actual closed proof. The proposed $3$D manuscript currently contains a plausible strategy, but several key estimates are not established. Therefore, the $3$D result should not yet be written as a theorem claiming a continuum mass-gap bound.
+
+### A. The value $\kappa_0=\frac18$ is not derived
+
+The identity
+
+$$
+\int_{SU(2)}dU\,
+\chi_{1/2}(UA)\chi_{1/2}(U^{-1}B)
+=\frac12\chi_{1/2}(AB)
+$$
+
+is correct, with the appropriate orientations. However, it only evaluates one Haar integral involving two character factors. It does **not** by itself prove that the coefficient of a particular $1\times2$ rectangle in the complete blocked action is
+
+$$
+c_{1\times2}^{(d+1)}
+=\frac12\left(a_{1/2}^{(d)}\right)^2,
+$$
+
+still less that
+
+$$
+c_{1\times2}^{(d+1)}
+\leq \frac18 g^2a_d.
+$$
+
+The reasons are:
+
+1. A $2\times2\times2$ blocking integral contains many plaquettes and internal links, not one isolated pair.
+2. The blocked action is obtained after taking a logarithm of the effective Boltzmann weight:
+   $$e^{-S_{\mathrm{eff}}(V)}
+   =   \int dU_{\mathrm{int}}\,
+   e^{-S(U_{\mathrm{int}},V)}.$$
+   Coefficients in $S_{\mathrm{eff}}=-\log Z_{\mathrm{eff}}$ are cumulants, not simply coefficients in $Z_{\mathrm{eff}}$.
+3. Several representation channels and loop geometries contribute to the same gauge-invariant operator.
+4. The chosen operator basis is not unique; coefficients depend on the projection or parametrization used.
+5. The estimate
+   $$\frac12(a_{1/2})^2
+   \leadsto \frac18 g^2a_d$$
+   is not algebraically valid in the stated form.
+
+In particular, at weak coupling,
+
+$$
+a_{1/2}(\beta)
+=1-\frac{3}{2\beta}+O(\beta^{-2}),
+$$
+
+so
+
+$$
+\frac12a_{1/2}(\beta)^2
+=\frac12+O(\beta^{-1}),
+$$
+
+which is not $O(\beta^{-1})=O(g^2a_d)$. Thus the quantity $\frac12a_{1/2}^2$ cannot directly be the small irrelevant rectangle coefficient in the weak-coupling effective action.
+
+The safe replacement is:
+
+> **Proposition A — to be proved.** For a precisely defined $2\times2\times2$ blocking map and a specified operator projection, the generated rectangle coefficient satisfies
+> $$|c_{1\times2}^{(d+1)}|
+> \leq K_{\mathrm{rect}}\,g^2a_d
+> +O\!\left((g^2a_d)^2\right),$$
+> where $K_{\mathrm{rect}}$ must be computed from the complete blocked integral.
+
+At present,
+
+$$
+K_{\mathrm{rect}}=\frac18
+$$
+
+should be labeled **conjectural**, not proved.
+
+---
+
+### B. The value $v_*=\frac{1}{13e}$ is only a conditional KP threshold
+
+The arithmetic is correct **if** all of the following assumptions hold:
+
+1. polymer activities satisfy
+   $$|\zeta(\gamma)|\leq v^{|\gamma|};$$
+2. the number of incompatible polymers of size $k$ meeting a fixed polymer is bounded by
+   $$N_k\leq |\gamma_0|\frac{12^k}{12};$$
+3. the Kotecký–Preiss weight is $e^{|\gamma|}$;
+4. no additional representation, orientation, or loop-shape multiplicities are missing.
+
+Under those assumptions,
+
+$$
+\sum_{k\geq1}
+\frac{12^k}{12}v^ke^k
+=\frac{ve}{1-12ve}.
+$$
+
+Demanding this to be at most $1$ gives
+
+$$
+\frac{ve}{1-12ve}\leq1
+\iff
+13ev\leq1
+\iff
+v\leq\frac{1}{13e}.
+$$
+
+So the correct statement is:
+
+$$
+\boxed{
+v_*=\frac{1}{13e}
+}
+$$
+
+is a **conditional sufficient threshold for the assumed polymer model**.
+
+It is not yet a theorem for the blocked $3$D Yang–Mills measure because the activity estimate
+
+$$
+|\zeta(\gamma)|
+\leq
+\left(a_{1/2}^{(d)}+4c_{1\times2}^{(d)}\right)^{|\gamma|}
+$$
+
+has not been derived. In particular, the full blocked action contains infinitely many loop and multi-trace interactions, so one must replace $v_d$ by a norm controlling the entire activity family, for example
+
+$$
+\mathfrak v_d(\mu)
+:=
+\sup_{x}
+\sum_{\gamma\ni x}
+|\zeta_d(\gamma)|e^{\mu|\gamma|}.
+$$
+
+Then the KP hypothesis is stated directly as
+
+$$
+\mathfrak v_d(\mu)\leq \mu.
+$$
+
+A finite truncation such as
+
+$$
+v_d=a_{1/2}^{(d)}+4c_{1\times2}^{(d)}
+$$
+
+is not sufficient unless the remainder satisfies an independently proved bound:
+
+$$
+\sum_{\gamma\notin\{\text{plaquettes, rectangles}\}}
+|\zeta_d(\gamma)|e^{\mu|\gamma|}
+\leq
+r_d.
+$$
+
+The effective control parameter should therefore be
+
+$$
+\boxed{
+\mathfrak v_d
+=\mathfrak v_d^{\mathrm{plaq}}
++
+\mathfrak v_d^{\mathrm{rect}}
++
+\mathfrak v_d^{\mathrm{remainder}}
+}
+$$
+
+rather than only $a_{1/2}^{(d)}+4c_{1\times2}^{(d)}$.
+
+---
+
+### C. The proposed energy bound is not yet justified
+
+The assertion that every non-vacuum state contains a winding flux loop is not valid on a general spatial torus. A non-vacuum state can be a **localized glueball excitation** with zero winding number.
+
+Thus a polymer estimate for winding flux sectors does not automatically establish
+
+$$
+\operatorname{spec}(H)\setminus\{0\}
+\subseteq
+[\Delta,\infty)
+$$
+
+for the entire physical spectrum.
+
+A correct 3D certificate must separately control:
+
+1. local gauge-invariant excitations;
+2. winding electric-flux sectors;
+3. all spin-network sectors;
+4. the vacuum sector and its orthogonal complement.
+
+The safe target is an operator estimate:
+
+$$
+\left\|
+e^{-tH_d}P_{\Omega_d^\perp}
+\right\|
+\leq
+C_d e^{-m_dt},
+$$
+
+or, before reconstruction, a uniform bilinear estimate on the positive-time gauge-invariant algebra:
+
+$$
+\left|
+\langle\Theta A\,\tau_t(B)\rangle_d
+-
+\langle\Theta A\rangle_d
+\langle B\rangle_d
+\right|
+\leq
+C_d e^{-m_dt}
+\|[A]_\perp\|_{\mathrm{OS}}
+\|[B]_\perp\|_{\mathrm{OS}}.
+$$
+
+A polymer expansion might prove such an estimate, but that implication has not yet been demonstrated.
+
+---
+
+### D. The proposed forcing estimate has a dimensional problem
+
+The manuscript proposal wrote
+
+$$
+\beta_d
+\leq
+\frac{C_{\mathrm{geom}}}{A_{d+1}}
+c_{1\times2}^{(d+1)}.
+$$
+
+If $A_{d+1}$ is an area, then $c_{1\times2}$ must have the corresponding dimensions for this to represent a physical mass or string-tension error. In addition, the proposed expression later became
+
+$$
+\beta_d
+\leq
+\frac{\text{constant}}{a_d},
+$$
+
+which **grows** as $a_d\to0$. That is not an ultraviolet-small forcing estimate.
+
+The forcing should instead be defined directly as the difference between two certified physical decay rates:
+
+$$
+\beta_{n,L,d}
+:=
+\max\left\{
+0,\,
+\underline m^{\,\mathrm{ideal}}_{n,L,d+1}
+-
+\underline m_{n,L,d+1}
+\right\},
+$$
+
+with both terms expressed in the same physical units. Then one must prove a bound of the form
+
+$$
+\beta_{n,L,d}
+\leq
+K\,\mathfrak r_{n,L,d},
+$$
+
+where $\mathfrak r_{n,L,d}$ is a dimensionally correct norm of the omitted effective-action remainder.
+
+A valid summability statement would be
+
+$$
+\sup_{n,L}
+\sum_{d=0}^{d(n)-1}
+\rho^{d(n)-1-d}\beta_{n,L,d}
+<
+\infty,
+$$
+
+and positivity requires the stronger margin condition
+
+$$
+\sup_{n,L}
+\sum_{d=0}^{d(n)-1}
+\rho^{d(n)-1-d}\beta_{n,L,d}
+<
+\bar m-
+\sup_{n,L}\rho^{d(n)}D_{n,L,0}.
+$$
+
+---
+
+## Corrected status of the proposed 3D paper
+
+The honest classification is:
+
+| Component | Current status |
+|---|---|
+| 3D lattice and transfer-matrix setup | Valid framework |
+| Gauge-invariant spin-network Hilbert space | Standard, conditional on finite-volume construction |
+| Haar character identities | Valid |
+| Exact $2$D analogy | Valid as motivation |
+| $c_{1\times2}\leq\frac18g^2a_d$ | Not proved |
+| $\mathfrak v_*=1/(13e)$ arithmetic | Correct conditional calculation |
+| Polymer activity bound | Not proved |
+| Sector-wide energy certificate | Not proved |
+| $D_{d+1}\leq\frac14D_d+\beta_d$ | Not proved |
+| Continuum 3D mass-gap conclusion | Not established by the current argument |
+
+Therefore, the appropriate title is **not**:
+
+> An Explicit Deficit-Contraction Theorem for Three-Dimensional $SU(2)$ Lattice Gauge Theory
+
+A defensible title would be:
+
+> **A Polymer-Expansion Program for Deficit Contraction in Three-Dimensional $SU(2)$ Lattice Gauge Theory**
+
+or:
+
+> **Toward a Sector-Wide Deficit Certificate for Three-Dimensional $SU(2)$ Lattice Gauge Theory**
+
+That would be publishable as a program or methodological note only if the claims are clearly labeled as proposed estimates rather than proved theorems.
+
+---
+
+# 2. Corrected LaTeX manuscript skeleton
+
+Below is a safer LaTeX source. It deliberately distinguishes proved statements, conditional propositions, and open obligations.
+
+```latex
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{bm}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+
+\title{\bfseries
+A Polymer-Expansion Program for Deficit Contraction in
+Three-Dimensional \texorpdfstring{$SU(2)$}{SU(2)} Lattice Gauge Theory
+}
+
+\author{Nicholas Reid Angell}
+\date{November 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We formulate a three-dimensional extension of a deficit-contraction
+mechanism established exactly for two-dimensional $SU(2)$ lattice gauge
+theory. In three dimensions, real-space blocking generates an effective
+action containing infinitely many gauge-invariant interactions, so the
+two-dimensional character calculation does not close exactly. We formulate
+a candidate polymer norm controlling the complete family of effective
+activities and derive a conditional Kotecký--Preiss criterion. We also
+separate the geometric contraction mechanism from the unresolved estimates
+needed to control the generated effective-action remainder. The resulting
+framework identifies precise sufficient conditions for a sector-wide
+exponential-decay bound, but does not claim a three-dimensional continuum
+mass-gap theorem.
+\end{abstract}
+
+\section{Introduction}
+
+In two-dimensional pure lattice gauge theory, character orthogonality makes
+the real-space blocking map exactly solvable. For a $2\times2$ block, the
+normalized character coefficients obey
+\[
+  a_j \longmapsto a_j^4.
+\]
+This exact closure permits explicit sector ordering, reflection positivity,
+and a certified deficit-contraction estimate.
+
+The situation changes in three dimensions. A spatial slice is two
+dimensional, the physical Hilbert space contains spin-network states, and
+blocking generates an infinite collection of local and non-local
+gauge-invariant interactions. The purpose of this paper is therefore
+formulative: we identify a polymer norm and a set of estimates that would
+be sufficient for a three-dimensional sector-wide certificate.
+
+All statements depending on these unproved estimates are explicitly marked
+as conditional.
+
+\section{Three-dimensional lattice gauge theory}
+
+Let $\Lambda_a$ be a three-dimensional cubic lattice with spacing $a$.
+To each oriented link $e$ assign
+\[
+  U_e\in SU(2).
+\]
+For a plaquette $p$, let $U_p$ denote its oriented holonomy. The Wilson
+action is
+\[
+  S_a(U)
+  =  \beta
+  \sum_p
+  \left(
+    1-\frac12\operatorname{ReTr}U_p
+  \right),
+  \qquad
+  \beta=\frac{4}{g^2a}.
+\]
+Here $g^2$ has the dimensions of mass.
+
+A gauge transformation $h$ acts by
+\[
+  U_{xy}\longmapsto h_xU_{xy}h_y^{-1}.
+\]
+
+\section{Transfer matrix and physical states}
+
+After choosing a temporal direction, the spatial slice is a
+two-dimensional lattice. The physical Hilbert space consists of
+gauge-invariant square-integrable functions of spatial link variables:
+\[
+  \mathcal H_{\mathrm{phys}}
+  =  L^2(\{\text{spatial links}\},dU)^{\mathrm{gauge}}.
+\]
+A convenient basis is given by spin networks, namely closed Wilson
+networks with representation labels and intertwiners.
+
+For a reflection-positive lattice action, the transfer operator has the form
+\[
+  T_a=e^{-aH_a},
+  \qquad
+  T_a\geq 0.
+\]
+The construction of $T_a$ is standard at finite lattice spacing, but a
+sector-wide lower bound on $H_a$ requires estimates beyond positivity.
+
+\section{Blocking}
+
+Let $\mathcal B_2$ denote a proposed gauge-covariant blocking map with
+\[
+  a_{d+1}=2a_d.
+\]
+The blocked effective action is defined formally by
+\[
+  e^{-S_{d+1}(V)}
+  =  \int dU_{\mathrm{int}}\,
+  e^{-S_d(U_{\mathrm{int}},V)}.
+\]
+Unlike in two dimensions, the resulting action is not expected to remain
+within the single-plaquette Wilson family.
+
+We write formally
+\[
+  S_{d+1}(V)
+  =  S_{d+1}^{\mathrm{plaq}}(V)
+  +
+  \sum_{\gamma\in\mathcal P}
+  c_{d+1}(\gamma)\,\mathcal O_\gamma(V),
+\]
+where $\mathcal P$ is a family of gauge-invariant loop and multi-loop
+operators.
+
+\begin{remark}
+The coefficients $c_{d+1}(\gamma)$ depend on the chosen operator basis and
+on the precise blocking map. A numerical coefficient such as $1/8$ cannot
+be assigned without specifying both.
+\end{remark}
+
+\section{A conditional estimate for generated operators}
+
+The basic $SU(2)$ character identity
+\[
+ \int_{SU(2)}dU\,
+ \chi_j(UA)\chi_k(U^{-1}B)
+ = \frac{\delta_{jk}}{d_j}\chi_j(AB)
+\]
+is exact. It shows how pairs of character factors can fuse into larger
+holonomies.
+
+It does not, by itself, determine the complete blocked action.
+
+\begin{proposition}[Conditional rectangle estimate]
+Suppose a specified blocking map and operator projection satisfy
+\[
+  \left|c_{d+1}(R_{1\times2})\right|
+  \leq
+  K_{\mathrm{rect}}\,g^2a_d
+  +
+  K_{\mathrm{rect}}^{(2)}(g^2a_d)^2
+\]
+uniformly in the finite volume and in the range of scales under
+consideration. Then the rectangle contribution is ultraviolet-small in
+the dimensionless combination $g^2a_d$.
+\end{proposition}
+
+\begin{remark}
+The value $K_{\mathrm{rect}}=1/8$ is not proved here. Establishing it
+requires the complete finite-block integral, the logarithm defining the
+effective action, and a precise projection onto the rectangle operator.
+\end{remark}
+
+\section{Polymer activities}
+
+Let $\gamma$ denote a connected polymer on the relevant coarse lattice.
+Let $\zeta_d(\gamma)$ denote its activity in a convergent polymer
+representation of the blocked transfer kernel.
+
+Define the polymer norm
+\[
+  \mathfrak v_d(\mu)
+  :=
+  \sup_x
+  \sum_{\gamma\ni x}
+  |\zeta_d(\gamma)|e^{\mu|\gamma|}.
+\]
+
+\begin{definition}[Kotecký--Preiss domain]
+The effective action at depth $d$ is said to lie in the
+Kotecký--Preiss domain with parameter $\mu>0$ if
+\[
+  \mathfrak v_d(\mu)\leq\mu.
+\]
+\end{definition}
+
+\begin{proposition}[Conditional cluster convergence]
+If the polymer activities satisfy the Kotecký--Preiss condition, then the
+polymer expansion converges absolutely and uniformly in the spatial volume.
+Connected correlation functions admit an absolutely convergent cluster
+expansion.
+\end{proposition}
+
+\begin{remark}
+A bound involving only the plaquette coefficient and one rectangle
+coefficient is sufficient only if all omitted activities are bounded
+separately. In particular, the quantity
+\[
+  v_d=a_{1/2}^{(d)}+4c_{1\times2}^{(d)}
+\]
+is not, by itself, a complete polymer norm.
+\end{remark}
+
+\section{A conditional sector-wide decay certificate}
+
+Let $\mathcal A_+$ be the positive-time gauge-invariant cylinder algebra.
+Assume that the convergent polymer expansion implies the bilinear estimate
+\[
+\left|
+\langle\Theta A\,\tau_t(B)\rangle_d
+-
+\langle\Theta A\rangle_d\langle B\rangle_d
+\right|
+\leq
+C_d e^{-m_dt}
+\|[A]_\perp\|_{\mathrm{OS}}
+\|[B]_\perp\|_{\mathrm{OS}}
+\]
+for all $A,B\in\mathcal A_+$.
+
+Then, after Osterwalder--Schrader reconstruction,
+\[
+  \|e^{-tH_d}P_{\Omega_d^\perp}\|
+  \leq C_de^{-m_dt}.
+\]
+If $C_d$ is uniformly controlled and the estimate survives the continuum
+and infinite-volume limits, then the limiting Hamiltonian has a positive
+gap.
+
+\begin{remark}
+A winding-flux estimate alone does not control localized glueball states.
+The estimate above must hold on a dense physical sector, or directly in
+operator norm.
+\end{remark}
+
+\section{Deficit recursion}
+
+Let $\underline m_d$ be a certified physical decay rate and let
+$\overline m>0$ be a fixed reference rate. Define
+\[
+  D_d=\overline m-\underline m_d.
+\]
+
+Suppose the blocking analysis proves
+\[
+  D_{d+1}
+  \leq
+  \rho D_d+\beta_d,
+  \qquad
+  0\leq\rho<1.
+\]
+After $N$ steps,
+\[
+  D_N
+  \leq
+  \rho^ND_0
+  +
+  \sum_{d=0}^{N-1}\rho^{N-1-d}\beta_d.
+\]
+
+A uniform positive limiting bound requires
+\[
+ \sup_{n,L}
+ \sum_{d=0}^{d(n)-1}
+ \rho^{d(n)-1-d}\beta_{n,L,d}
+ <
+ \overline m
+ -
+ \sup_{n,L}
+ \rho^{d(n)}D_{n,L,0}.
+\]
+
+This is the actual quantitative target. Finiteness of the forcing sum alone
+does not guarantee positivity.
+
+\section{What remains to be proved}
+
+A three-dimensional theorem would require:
+
+\begin{enumerate}[label=(\roman*)]
+  \item an explicit gauge-covariant blocking map;
+  \item a proof of reflection positivity for the blocked theory;
+  \item a complete polymer representation of the blocked transfer kernel;
+  \item uniform bounds on every polymer activity;
+  \item a sector-wide, not merely winding-sector, exponential-decay estimate;
+  \item a dimensionally consistent bound on the forcing term $\beta_d$;
+  \item uniformity in cutoff, volume, boundary conditions, and blocking depth;
+  \item convergence to a nontrivial continuum Schwinger hierarchy.
+\end{enumerate}
+
+\section{Comparison with two dimensions}
+
+In two dimensions, character orthogonality gives exact closure:
+\[
+  a_j^{(d+1)}=(a_j^{(d)})^4.
+\]
+The associated certificate can be analyzed explicitly.
+
+In three dimensions, one has instead
+\[
+  S_{d+1}
+  =  \mathcal B_2(S_d)
+  =  S_{d+1}^{\mathrm{reference}}
+  +
+  R_{d+1},
+\]
+where the remainder $R_{d+1}$ contains infinitely many interactions.
+The desired analogue of the two-dimensional theorem is therefore conditional on
+uniform control of $R_{d+1}$.
+
+\section{Conclusion}
+
+The two-dimensional result gives an exact benchmark for the structure of a
+deficit-contraction proof. In three dimensions, the natural next object is
+not yet a proved constant $\kappa_0=1/8$ or a proved mass-gap theorem, but
+a complete polymer norm controlling the blocked action.
+
+The principal open estimate is:
+\[
+  \sup_{n,L}
+  \sum_{d=0}^{d(n)-1}
+  \rho^{d(n)-1-d}\beta_{n,L,d}
+  <
+  \overline m
+  -
+  \sup_{n,L}\rho^{d(n)}D_{n,L,0}.
+\]
+Proving this estimate together with the sector-wide decay certificate would
+constitute the substantive three-dimensional advance.
+
+\begin{thebibliography}{9}
+
+\bibitem{Migdal1975}
+A.~A. Migdal,
+\emph{Recursion equations in gauge field theories},
+Sov. Phys. JETP \textbf{42} (1975).
+
+\bibitem{OS1978}
+K.~Osterwalder and E.~Seiler,
+\emph{Gauge field theories on a lattice},
+Ann. Phys. \textbf{110} (1978).
+
+\bibitem{Balaban1987}
+T.~Balaban,
+\emph{Renormalization group approach to lattice gauge field theories I},
+Commun. Math. Phys. \textbf{109} (1987).
+
+\bibitem{KP}
+R.~Koteck\'y and D.~Preiss,
+\emph{Cluster expansion for abstract polymer models},
+Commun. Math. Phys. \textbf{103} (1986).
+
+\end{thebibliography}
+
+\end{document}
+```
+
+## Bottom line
+
+The 3D direction is worthwhile, but the previous draft went too far: it presented conditional estimates as established lemmas. The strongest defensible next paper is a **carefully labeled 3D program/proposition paper**, not yet a theorem claiming a positive continuum mass gap.
+
+The first genuine technical deliverable should be:
+
+$$
+\boxed{
+\text{Compute the complete finite-block effective action or rigorously bound its full polymer activity norm.}
+}
+$$
+
+Only after that can $\kappa_0$, $\beta_d$, the KP threshold, and the deficit recursion be stated as proved results.
